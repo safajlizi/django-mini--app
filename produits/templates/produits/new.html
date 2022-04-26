@@ -1,0 +1,20 @@
+{% if message %} 
+<p style="background-color: brown; color: aliceblue;"> {{message}}</p>
+{% endif %} 
+<form action=" {% url 'new' %}" method="POST" > 
+{% csrf_token %}
+<fieldset>
+    <label for="label"> label </label>
+    <input type="text" name="label" id="label" value=""><br> <br> 
+    <label for="prix"> prix </label>
+    <input type="text" name="prix" id="prix" value=""><br> <br> 
+    <label for="qte"> qte </label>
+    <input type="number" name="qte" id="qte" value=""><br> <br> 
+    <select name="categorys" id="categ">
+        {% for category in categorys %}
+        <option value="{{category.id}}" >{{category.label}}</option>
+        {% endfor %}
+    </select>
+<input type="submit" value="save"> 
+</fieldset>
+</form>
